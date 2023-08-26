@@ -1,4 +1,4 @@
-﻿<?php include_once "base.php"; ?>
+<?php include_once "base.php"; ?>
 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -22,20 +22,23 @@
 
 	<div id="all">
 		<div id="title">
-			<?=date("m月 d日 l");?> | 今日瀏覽: <?= $Viewer->todayViewer(); ?> | 累積瀏覽: <?= $Viewer->totalViewer(); ?>
+			<?= date("m月 d號 l"); ?> | 今日瀏覽: <?= $Viewer->todayViewer(); ?> | 累積瀏覽: <?= $Viewer->totalViewer(); ?>
 			<a href="index.php" style="float:right;">回首頁</a>
 		</div>
+
+
+
 
 		<div id="title2">
 			<a href="index.php"><img src="./icon/02B01.jpg" title="健康促進網 - 回首頁"></a>
 		</div>
 		<div id="mm">
 			<div class="hal" id="lef">
-				<a class="blo" href="?do=po">分類網誌</a>
-				<a class="blo" href="?do=news">最新文章</a>
-				<a class="blo" href="?do=pop">人氣文章</a>
-				<a class="blo" href="?do=know">講座訊息</a>
-				<a class="blo" href="?do=que">問卷調查</a>
+				<a class="blo" href="?do=admin">帳號管理</a>
+                <a class="blo" href="?do=po">分類網誌</a>
+				<a class="blo" href="?do=news">最新文章管理</a>
+				<a class="blo" href="?do=know">講座管理</a>
+				<a class="blo" href="?do=que">問卷管理</a>
 			</div>
 			<div class="hal" id="main">
 				<div style="display:flex">
@@ -68,11 +71,11 @@
 				<div class="">
 					<?php
 						$do=$_GET['do']??'main';
-						$file='./view/front/'.$do.'.php';
+						$file='./view/backend/'.$do.'.php';
 						if(file_exists($file)){
 							include $file;
 						}else{
-							include './view/front/main.php';
+							include './view/backend/main.php';
 						}
 					?>
 

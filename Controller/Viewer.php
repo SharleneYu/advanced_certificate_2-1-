@@ -1,6 +1,6 @@
 <?php
 
-include "DB.php";
+include_once "DB.php";
 
 class Viewer extends DB
 {
