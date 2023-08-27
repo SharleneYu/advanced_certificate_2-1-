@@ -11,9 +11,11 @@
         border: 1px solid black;
         margin-left: -1px;
         cursor: pointer;
+        border-radius:7px 7px 0 0;
     }
     .active-tab{
         background-color: white;
+        border-bottom: 1px solid white;
     }
     .posts{
         border: 1px solid black;
