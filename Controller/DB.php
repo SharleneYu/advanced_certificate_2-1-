@@ -19,15 +19,10 @@ class DB
 
     function all(...$arg)
     {
-        $sql = $this->sql_all(" SELECT * FROM $this->table ", ...$arg);
+        $sql = " SELECT * FROM $this->table ";
+        $sql = $this->sql_all($sql, ...$arg);
         return $this->pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     }
-
-
-    // function all(...$arg){
-    //     $sql=$this->sql_all(" SELECT * FROM $this->table ", ...$arg);
-    //     return $this->pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
-    // }
 
     //用在查詢單筆資料查詢，但條件WHERE透過sql_one()準備
     function find($arg)
@@ -100,6 +95,7 @@ class DB
     protected function sql_all($sql, ...$arg)
     {
         //如果$arg的1st參數是陣列，通常會用在WHERE的條件句(需聯集)
+       
         if (isset($arg[0])) {
             if (is_array($arg[0])) {
                 $tmp = $this->a2s($arg[0]);
@@ -108,6 +104,7 @@ class DB
                 $sql = $sql . $arg[0];
             }
         }
+
         if (isset($arg[1])) {
             $sql = $sql . $arg[1];
         }
@@ -145,13 +142,13 @@ class DB
         include($path); //引進畫面
     }
 
-    function paginate($num,$arg=null){
-        $total=$this->count($arg);
+    function paginate($num,$arg=null, $arg2=null){
+        $total=$this->count($arg, $arg2);
         $pages=ceil($total/$num);
         $now=$_GET['p']??1;
         $start=($now-1)*$num;
 
-        $rows=$this->all($arg," limit $start,$num");
+        $rows=$this->all($arg, $arg2 ." limit $start,$num");
         $this->links=[
             'total'=>$total,
             'pages'=>$pages,
