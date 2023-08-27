@@ -34,7 +34,7 @@
 		</div>
 		<div id="mm">
 			<div class="hal" id="lef">
-				<a class="blo" href="?do=admin">帳號管理</a>
+				<a class="blo" href="?do=user">帳號管理</a>
                 <a class="blo" href="?do=po">分類網誌</a>
 				<a class="blo" href="?do=news">最新文章管理</a>
 				<a class="blo" href="?do=know">講座管理</a>
@@ -71,9 +71,10 @@
 				<div class="">
 					<?php
 						$do=$_GET['do']??'main';
-						$file='./view/backend/'.$do.'.php';
+						$table=ucfirst($do);
+						$file="./view/backend/".$do.".php";
 						if(file_exists($file)){
-							include $file;
+							$$table->backend();
 						}else{
 							include './view/backend/main.php';
 						}

@@ -34,5 +34,14 @@ class User extends DB
         return $this->count($user);
     }
     
-
+    function backend(){
+        //建立相關資料的陣列
+        $data=[
+            // 取得所有user資料
+            'rows' => $this->all()
+        ];
+        
+        //將要執行的頁面載入
+        $this->view("./view/backend/user.php", $data);
+    }
 }

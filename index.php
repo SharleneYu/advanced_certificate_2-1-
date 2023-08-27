@@ -68,7 +68,7 @@
 				<div class="">
 					<?php
 						$do=$_GET['do']??'main';
-						$file='./view/front/'.$do.'.php';
+						$file="./view/front/".$do.".php";
 						if(file_exists($file)){
 							include $file;
 						}else{
