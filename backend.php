@@ -12,6 +12,11 @@
 	<link href="./css/css.css" rel="stylesheet" type="text/css">
 	<script src="./js/jquery-1.9.1.min.js"></script>
 	<script src="./js/js.js"></script>
+	<style>
+		body{
+			background-color: lightcyan;
+		}
+	</style>
 </head>
 
 <body>
@@ -73,7 +78,7 @@
 						$do=$_GET['do']??'main';
 						$table=ucfirst($do);
 						$file="./view/backend/".$do.".php";
-						if(file_exists($file)){
+						if(file_exists($file)  && $do!='main'){
 							$$table->backend();
 						}else{
 							include './view/backend/main.php';
